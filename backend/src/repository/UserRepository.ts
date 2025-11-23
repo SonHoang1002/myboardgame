@@ -1,4 +1,4 @@
-import { mysqlPool } from '../config/database';
+import { mysqlPool } from '../config/Database';
 import { User, CreateUserRequest, UpdateUserRequest } from '../model/mysql/User';
 
 export class UserRepository {

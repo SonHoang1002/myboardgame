@@ -1,7 +1,8 @@
 import { Router, Request, Response } from 'express';
 import { UserRepository } from '../repository/UserRepository';
 import { CreateUserRequest } from '../model/mysql/User';
-import { mysqlPool } from '../config/database';
+import { mysqlPool } from '../config/Database';
+import { encodePassword } from '../util/EncodeDecode';
 
 const router = Router();
 const userRepository = new UserRepository();
@@ -28,7 +29,7 @@ router.get('/users', async (req: Request, res: Response) => {
 router.get('/users/:id', async (req: Request, res: Response) => {
   try {
     const id = parseInt(req.params.id);
-    
+
     if (isNaN(id)) {
       return res.status(400).json({
         success: false,
@@ -37,14 +38,14 @@ router.get('/users/:id', async (req: Request, res: Response) => {
     }
 
     const user = await userRepository.findById(id);
-    
+
     if (!user) {
       return res.status(404).json({
         success: false,
         error: 'User not found'
       });
     }
-    
+
     res.json({
       success: true,
       data: user
@@ -61,40 +62,51 @@ router.get('/users/:id', async (req: Request, res: Response) => {
 // POST /api/users - Tạo user mới
 router.post('/users', async (req: Request, res: Response) => {
   try {
-    const userData: CreateUserRequest = req.body;
-    console.log("create user data: ", userData)
+    const body = req.body;
+    const username = body.username;
+    const email = body.email;
+    const password = body.password;
+
+    console.log("create user data: ", {username,email,password})
     // Basic validation
-    if (!userData.username || !userData.email || !userData.password) {
+
+    // thông tin cơ bản ko được null 
+    if (!username || !email || !password) {
       return res.status(400).json({
         success: false,
         error: 'Username, email and password are required'
       });
     }
-
-    if (userData.password.length < 6) {
+    if (password.length < 6) {
       return res.status(400).json({
         success: false,
         error: 'Password must be at least 6 characters long'
       });
     }
-
+    const passwordEncoded = await encodePassword(password);
+    const userData: CreateUserRequest = {
+     username,
+     email,
+      password,
+      passwordEncoded,
+    };
     const newUser = await userRepository.create(userData);
-    
+
     res.status(201).json({
       success: true,
       data: newUser,
-      message: 'User created successfully'
+      message: 'User created successfully',
     });
   } catch (error: any) {
     console.error('Error creating user:', error);
-    
+
     if (error.message.includes('already exists')) {
       return res.status(400).json({
         success: false,
         error: error.message
       });
     }
-    
+
     res.status(500).json({
       success: false,
       error: error.message || 'Internal server error'
@@ -107,7 +119,7 @@ router.get('/health', async (req: Request, res: Response) => {
   try {
     // Test database connection
     const [result] = await mysqlPool.execute('SELECT 1 as test');
-    
+
     res.json({
       success: true,
       message: 'Database connection is healthy',
@@ -127,7 +139,7 @@ router.get('/health', async (req: Request, res: Response) => {
 router.get('/games', async (req: Request, res: Response) => {
   try {
     const [games] = await mysqlPool.execute('SELECT * FROM games');
-    
+
     res.json({
       success: true,
       data: games

@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Database
-import { initializeDatabase } from './config/database';
+import { initializeDatabase } from './config/Database';
 
 // Routes
 import userRoutes from './route/UserRoute';
