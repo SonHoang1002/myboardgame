@@ -1,11 +1,11 @@
-import bcrypt from 'bcrypt';
+import crypto from "crypto";
 
-
-async function encodePassword(password: string) {
-    const saltRounds = 10;
-    const passwordEncoded = await bcrypt.hash(password, saltRounds);
-    return passwordEncoded
+const encodePassword = (password: string): string => {
+    const secret = process.env.PASSWORD_SECRET_KEY!;
+    return crypto
+        .createHmac("sha256", secret)
+        .update(password)
+        .digest("hex");
 }
-
 
 export { encodePassword }
