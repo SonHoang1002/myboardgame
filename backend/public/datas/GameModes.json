@@ -1,0 +1,46 @@
+[
+    {
+        "id": 0,
+        "name": "2-Player Edition"
+    },
+    {
+        "id": 1,
+        "name": "Barking Kittens Expansion"
+    },
+    {
+        "id": 2,
+        "name": "Cat Burglar Edition"
+    },
+    {
+        "id": 3,
+        "name": "Good vs. Evil"
+    },
+    {
+        "id": 4,
+        "name": "Imploding Kittens Expansion"
+    },
+    {
+        "id": 5,
+        "name": "NSFW Edition"
+    },
+    {
+        "id": 6,
+        "name": "Original Edition"
+    },
+    {
+        "id": 7,
+        "name": "Party Pack Edition"
+    },
+    {
+        "id": 8,
+        "name": "Recipes for Disaster"
+    },
+    {
+        "id": 9,
+        "name": "Streaking Kittens Expansion"
+    },
+    {
+        "id": 10,
+        "name": "Zombie Kittens"
+    }
+]

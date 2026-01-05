@@ -1,0 +1,510 @@
+[
+    {
+        "id": 1,
+        "name": "Attack 2",
+        "gameMode": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            10
+        ],
+        "path": "Attack-2.jpg",
+        "description": "End your turn without drawing a card. Force the next player to take two turns."
+    },
+    {
+        "id": 2,
+        "name": "Beard Cat",
+        "gameMode": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            10
+        ],
+        "path": "Beard-Cat.jpg",
+        "description": "This is a cat card and is powerless on its own. Play two beard cat as pair to steal. A random card from another player."
+    },
+    {
+        "id": 3,
+        "name": "Defuse",
+        "gameMode": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8
+        ],
+        "path": "Defuse.jpg",
+        "description": "Put your last drawn card back into the deck"
+    },
+    {
+        "id": 4,
+        "name": "Exploding Kitchen",
+        "gameMode": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+        ],
+        "path": "Exploding-Kitten.jpg",
+        "description": "Show this card immediately."
+    },
+    {
+        "id": 5,
+        "name": "Favor",
+        "gameMode": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            7,
+            10
+        ],
+        "path": "Favor.jpg",
+        "description": "One player must give you a card of their choice."
+    },
+    {
+        "id": 6,
+        "name": "Nope",
+        "gameMode": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            10
+        ],
+        "path": "Nope.jpg",
+        "description": "Stop the action of another player. You can play this at any tiem"
+    },
+    {
+        "id": 7,
+        "name": "See-The-Future-3",
+        "gameMode": [
+            0,
+            2,
+            5,
+            6,
+            7,
+            8,
+            10
+        ],
+        "path": "See-the-Future-3.jpg",
+        "description": "Privately view the top three cards of the deck."
+    },
+    {
+        "id": 8,
+        "name": "Shuffle",
+        "gameMode": [
+            0,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            10
+        ],
+        "path": "Shuffle.jpg",
+        "description": "Shuffle the drawn pile."
+    },
+    {
+        "id": 9,
+        "name": "Skip",
+        "gameMode": [
+            0,
+            2,
+            5,
+            6,
+            7,
+            8,
+            10
+        ],
+        "path": "Skip.jpg",
+        "description": "End your turn without drawing a card."
+    },
+    {
+        "id": 10,
+        "name": "Barking Kitten",
+        "gameMode": [
+            1,
+            8
+        ],
+        "path": "Barking-Kitten.jpg",
+        "description": "When played, if anyone has another barking kitten they explode (or defuse). Otherwise keep it in front of you, and it becomes a target when another one id played."
+    },
+    {
+        "id": 11,
+        "name": "Alter the future 3",
+        "gameMode": [
+            1,
+            7,
+            8
+        ],
+        "path": "Alter-the-Future-3.jpg",
+        "description": "Privately view and rearrange the top three cards of the draw pile. Play at any time."
+    },
+    {
+        "id": 12,
+        "name": "Bury",
+        "gameMode": [
+            1,
+            8
+        ],
+        "path": "Bury.jpg",
+        "description": "End your turn by secretly putting the next card you drawback into the draw pile as if you had defused it."
+    },
+    {
+        "id": 13,
+        "name": "Ill-Take-That",
+        "gameMode": [
+            1,
+            8
+        ],
+        "path": "Ill-Take-That.jpg",
+        "description": "Put this card in front of another player to steal the next card they draw from the draw pile."
+    },
+    {
+        "id": 14,
+        "name": "Personal Attack 3",
+        "gameMode": [
+            1,
+            8
+        ],
+        "path": "Personal-Attack-3.jpg",
+        "description": "Take three turns in a row."
+    },
+    {
+        "id": 15,
+        "name": "Pot Luck",
+        "gameMode": [
+            1
+        ],
+        "path": "Pot-Luck.jpg",
+        "description": "Starting with you, and going in the direction of play around the table, each player puts a card on top of the draw pile."
+    },
+    {
+        "id": 16,
+        "name": "Share the Future 3",
+        "gameMode": [
+            1,
+            8
+        ],
+        "path": "Share-the-Future-3.jpg",
+        "description": "View and rearrange the top three cards in the draw pile, then show the cards to the next player."
+    },
+    {
+        "id": 17,
+        "name": "Tower of Power",
+        "gameMode": [
+            1
+        ],
+        "path": "Tower-of-Power.jpg",
+        "description": "Anytime someone steals from you, they blindly draw from the top of the tower when you like, take a card from the tower and shuffle the rest into the draw pile."
+    },
+    {
+        "id": 18,
+        "name": "Super Skip",
+        "gameMode": [
+            1,
+            10
+        ],
+        "path": "Super-Skip.jpg",
+        "description": "End your turn wihtout drawing a card. If you're supposed to take multiple turns, end them all."
+    },
+    {
+        "id": 19,
+        "name": "Armageddon",
+        "gameMode": [
+            3
+        ],
+        "path": "Armageddon.jpg",
+        "description": "Trigger the armageddon. Afterwards, end your turn.Can only be played if godcat is on the playmat."
+    },
+    {
+        "id": 20,
+        "name": "Devilcat",
+        "gameMode": [
+            3
+        ],
+        "path": "Devilcat.jpg",
+        "description": "Explode if you get devilcat in the armageddon. You must discard a defuse or explode. Then put it back on the playmat."
+    },
+    {
+        "id": 21,
+        "name": "Godcat",
+        "gameMode": [
+            3
+        ],
+        "path": "Godcat.jpg",
+        "description": "Play as any card in the game. Except a nope. After playing godcat. Put it back on the playmat."
+    },
+    {
+        "id": 22,
+        "name": "Raising Heck",
+        "gameMode": [
+            3
+        ],
+        "path": "Raising-Heck.jpg",
+        "description": "Draw the bottom card from the draw pile. Look at it, and either keep it or put it on the top of the draw pile. This ends your turns."
+    },
+    {
+        "id": 23,
+        "name": "Reveal The Future 3",
+        "gameMode": [
+            3
+        ],
+        "path": "Reveal-The-Future-3.jpg",
+        "description": "Show everyone the top three cards."
+    },
+    {
+        "id": 24,
+        "name": "Targeted Attack 2",
+        "gameMode": [
+            3,
+            4,
+            7,
+            8
+        ],
+        "path": "Targeted-Attack-2.jpg",
+        "description": "End your turn without drawing a card. Force the next player to take two turns. Play continues from that player."
+    },
+    {
+        "id": 25,
+        "name": "Alter the Future 3",
+        "gameMode": [
+            4
+        ],
+        "path": "Alter-the-Future-3.jpg",
+        "description": "Privately view and rearrange the top three cards of the draw pile."
+    },
+    {
+        "id": 26,
+        "name": "Draw from the Bottom",
+        "gameMode": [
+            4,
+            7,
+            8
+        ],
+        "path": "Draw-from-the-Bottom.jpg",
+        "description": "End your turn by drawing the card at the bottom of the draw pile."
+    },
+    {
+        "id": 27,
+        "name": "Feral Cat",
+        "gameMode": [
+            3,
+            4,
+            7,
+            8
+        ],
+        "path": "Feral-Cat.jpg",
+        "description": "Use as any cat card."
+    },
+    {
+        "id": 28,
+        "name": "Imploding Kitten",
+        "gameMode": [
+            4,
+            8
+        ],
+        "path": "Imploding-Kitten.jpg",
+        "description": "When drawn face down, put back in the deck face up, without using a defuse. When drawn face up, explode immediately this card cannot be defused."
+    },
+    {
+        "id": 29,
+        "name": "Reverse",
+        "gameMode": [
+            4,
+            8
+        ],
+        "path": "Reverse.jpg",
+        "description": "Reverse the order of play and end your turn without drawing a card."
+    },
+    {
+        "id": 30,
+        "name": "Alter the future 3 1",
+        "gameMode": [
+            8
+        ],
+        "path": "Alter-the-Future-3_1.jpg",
+        "description": "Privately view and rearrange the top three cards of the draw pile. Play at any time."
+    },
+    {
+        "id": 31,
+        "name": "Alter the future 3 2",
+        "gameMode": [
+            8
+        ],
+        "path": "Alter-the-Future-3_2.jpg",
+        "description": "Privately view and rearrange the top three cards of the draw pile"
+    },
+    {
+        "id": 32,
+        "name": "Catomic Bomb",
+        "gameMode": [
+            8,
+            9
+        ],
+        "path": "Catomic-Bomb.jpg",
+        "description": "remove the exploding kittensfrom the deck. Shuffle the deck. Put all those kittens face down on top. Your turn ends after playing this card."
+    },
+    {
+        "id": 33,
+        "name": "Garbage Collection",
+        "gameMode": [
+            8,
+            9
+        ],
+        "path": "Garbage-Collection.jpg",
+        "description": "Every player ( includind the one who player this card ) must choose one card to shuffle into the draw pile."
+    },
+    {
+        "id": 34,
+        "name": "Mark",
+        "gameMode": [
+            8,
+            9
+        ],
+        "path": "Mark.jpg",
+        "description": "Choose a player and randomly pick one of their cards. They must keeo that card facing outward in their hand until it is played or stolen."
+    },
+    {
+        "id": 35,
+        "name": "See The Future 5",
+        "gameMode": [
+            8,
+            9
+        ],
+        "path": "See-the-Future-5.jpg",
+        "description": "Privately view the top five cards of the deck."
+    },
+    {
+        "id": 36,
+        "name": "Streaking Kitten",
+        "gameMode": [
+            8,
+            9
+        ],
+        "path": "See-the-Future-5.jpg",
+        "description": "Keep this card a secret. As long as it 's in your hand may draw and secretly hold one exploding kitten without blowing up."
+    },
+    {
+        "id": 37,
+        "name": "Super Skip",
+        "gameMode": [
+            8,
+            9
+        ],
+        "path": "Super-Skip.jpg",
+        "description": "End your turn without drawing a card. If you're supposed to take multiple turns, end them all."
+    },
+    {
+        "id": 38,
+        "name": "Swap Top and Bottom",
+        "gameMode": [
+            8,
+            9
+        ],
+        "path": "Swap-Top-and-Bottom.jpg",
+        "description": "Swap the top and bottom cards of the draw pile."
+    },
+    {
+        "id": 39,
+        "name": "Curse of the Cat Butt",
+        "gameMode": [
+            9
+        ],
+        "path": "Curse-of-the-Cat-Butt.jpg",
+        "description": "Choose a player to be 'blind'. They must shuffle and keep their cards face down until they draw a card."
+    },
+    {
+        "id": 40,
+        "name": "Alter the Future 5",
+        "gameMode": [
+            9
+        ],
+        "path": "Alter-the-Future-5.jpg",
+        "description": "Privately view and rearrange the top five cards of the draw pile."
+    },
+    {
+        "id": 41,
+        "name": "Attack Of The Dead",
+        "gameMode": [
+            10
+        ],
+        "path": "Attack-Of-The-Dead.jpg",
+        "description": "Do not draw any cards. Force the next player to take three turns for each dead player."
+    },
+    {
+        "id": 42,
+        "name": "Clairvoyance",
+        "gameMode": [
+            10
+        ],
+        "path": "Clairvoyance.jpg",
+        "description": "Use when someone plays a zomie kitten. You get to watch where thay secretly put the exploding kitten(s). Play at any time."
+    },
+    {
+        "id": 43,
+        "name": "Clone",
+        "gameMode": [
+            10
+        ],
+        "path": "Clone.jpg",
+        "description": "When you play this card, it becomes whatever card it beneath it."
+    },
+    {
+        "id": 44,
+        "name": "Dig Deeper",
+        "gameMode": [
+            10
+        ],
+        "path": "Dig-Deeper.jpg",
+        "description": "Draw a card, look at it and then either keep it, or draw the next card ( which you must keep ) and put the first card face down on top of the draw pile."
+    },
+    {
+        "id": 45,
+        "name": "Feed The Dead",
+        "gameMode": [
+            10
+        ],
+        "path": "Feed-The-Dead.jpg",
+        "description": "Pick a dead player. All living players ( except you ) must choose one card from their hand to give to them. Play at any time."
+    },
+    {
+        "id": 46,
+        "name": "Grave Robber",
+        "gameMode": [
+            10
+        ],
+        "path": "Grave-Robber.jpg",
+        "description": "All dead players with card must choose one card from their hand to shuffle into the draw pile."
+    },
+    {
+        "id": 47,
+        "name": "Zombie Kitten",
+        "gameMode": [
+            10
+        ],
+        "path": "Zombie-Kitten.jpg",
+        "description": "Instead of exploding, secretly put an exploding kitten back into the draw pile, and bring a dead player back to life."
+    }
+]

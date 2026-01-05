@@ -1,5 +1,9 @@
 import { createPool, Pool, PoolConnection } from 'mysql2/promise';
 import dotenv from 'dotenv';
+import { encodePassword } from '../util/EncodeDecode';
+import { generateUID } from '../util/GenerationUID';
+import { SQL_TEMPLATES } from './DatabaseCommand';
+import { SAMPLE_DATA } from './DatabaseSampleData';
 
 dotenv.config();
 
@@ -59,94 +63,72 @@ export const initializeDatabase = async (): Promise<void> => {
   }
 };
 
+
 // Hàm tạo các bảng
 const createTables = async (): Promise<void> => {
   try {
-    // Tạo bảng users
-    const createUserTableSQL = `
-      CREATE TABLE IF NOT EXISTS users (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(50) UNIQUE NOT NULL,
-        email VARCHAR(100) UNIQUE NOT NULL,
-        password VARCHAR(255) NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+    // 1. Tạo bảng userlogin
+    console.log('📋 Creating userlogin table...');
+    await mysqlPool.execute(SQL_TEMPLATES.USER_LOGIN_TABLE);
+
+    // 2. Tạo user mặc định
+    console.log('👤 Creating default user...');
+    const insertUserLoginSQL = `
+      INSERT IGNORE INTO userlogin 
+      (username, email, password, password_encoded) 
+      VALUES (?, ?, ?, ?)
+    `;
+
+    await mysqlPool.execute(insertUserLoginSQL, [
+      SAMPLE_DATA.DEFAULT_USER.username,
+      SAMPLE_DATA.DEFAULT_USER.email,
+      SAMPLE_DATA.DEFAULT_USER.password,
+      SAMPLE_DATA.DEFAULT_USER.passwordEncoded
+    ]);
+
+    // 3. Tạo bảng users
+    console.log('📋 Creating users table...');
+    await mysqlPool.execute(SQL_TEMPLATES.USER_TABLE);
+    // Tạo bảng user ( dùng để sử dụng chính trong app )
+
+    await mysqlPool.execute(
+      SQL_TEMPLATES.USER_TABLE,
+    )
+
+    console.log('👤 Creating default user profile...');
+    const insertUserSQL = `
+      INSERT IGNORE INTO users 
+      (name_in_game, uid, status, location, avatar_url, phone, bio, login_id) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, 
+        (SELECT id FROM userlogin WHERE username = ? LIMIT 1)
       )
     `;
 
-    await mysqlPool.execute(createUserTableSQL);
-    console.log('✅ Users table is ready');
+    await mysqlPool.execute(insertUserSQL, [
+      SAMPLE_DATA.DEFAULT_MAIN_USER.name_in_game,
+      generateUID(),
+      SAMPLE_DATA.DEFAULT_MAIN_USER.status,
+      SAMPLE_DATA.DEFAULT_MAIN_USER.location,
+      SAMPLE_DATA.DEFAULT_MAIN_USER.avatar_url,
+      SAMPLE_DATA.DEFAULT_MAIN_USER.phone,
+      SAMPLE_DATA.DEFAULT_MAIN_USER.bio,
+      SAMPLE_DATA.DEFAULT_USER.username
+    ]);
 
-    // Tạo bảng games
-    const createGamesTableSQL = `
-      CREATE TABLE IF NOT EXISTS games (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(100) NOT NULL,
-        description TEXT,
-        max_players INT DEFAULT 4,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-      )
-    `;
-
-    await mysqlPool.execute(createGamesTableSQL);
-    console.log('✅ Games table is ready');
+    await mysqlPool.execute(SQL_TEMPLATES.ROOMS_TABLE);
+    console.log('✅ Rooms table is ready');
 
     // Tạo bảng game_sessions
-    const createGameSessionsTableSQL = `
-      CREATE TABLE IF NOT EXISTS game_sessions (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        session_code VARCHAR(10) UNIQUE NOT NULL,
-        game_id INT,
-        host_user_id INT,
-        status ENUM('waiting', 'active', 'finished') DEFAULT 'waiting',
-        max_players INT DEFAULT 4,
-        current_players INT DEFAULT 1,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        FOREIGN KEY (game_id) REFERENCES games(id),
-        FOREIGN KEY (host_user_id) REFERENCES users(id)
-      )
-    `;
 
-    await mysqlPool.execute(createGameSessionsTableSQL);
-    console.log('✅ Game sessions table is ready');
 
-    // Thêm dữ liệu mẫu vào bảng games
-    await seedSampleData();
+    await mysqlPool.execute(SQL_TEMPLATES.GAMES_TABLE);
+    console.log('✅ Games tables is ready');
+
 
   } catch (error) {
     console.error('❌ Table creation failed:', error);
     throw error;
-  }
-};
-
-// Hàm thêm dữ liệu mẫu
-const seedSampleData = async (): Promise<void> => {
-  try {
-    // Kiểm tra xem đã có dữ liệu trong bảng games chưa
-    const [rows] = await mysqlPool.execute('SELECT COUNT(*) as count FROM games');
-    const count = (rows as any)[0].count;
-
-    if (count === 0) {
-      // Thêm các game mẫu
-      const sampleGames = [
-        ['Cờ vua', 'Trò chơi chiến thuật cổ điển', 2],
-        ['Cờ tướng', 'Trò chơi trí tuệ phương Đông', 2],
-        ['Bài Poker', 'Trò chơi bài đầy kịch tính', 6],
-        ['Monopoly', 'Trò chơi bất động sản', 4],
-        ['Uno', 'Trò chơi bài gia đình', 4]
-      ];
-
-      for (const game of sampleGames) {
-        await mysqlPool.execute(
-          'INSERT INTO games (name, description, max_players) VALUES (?, ?, ?)',
-          game
-        );
-      }
-      console.log('✅ Sample games data added');
-    }
-  } catch (error) {
-    console.error('❌ Seeding sample data failed:', error);
   }
 };
 
@@ -156,7 +138,7 @@ export const testConnection = async (): Promise<boolean> => {
     if (!mysqlPool) {
       await initializeDatabase();
     }
-    
+
     const connection: PoolConnection = await mysqlPool.getConnection();
     console.log('✅ MySQL connection test passed!');
     connection.release();

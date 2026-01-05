@@ -6,20 +6,24 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // Database
-import { initializeDatabase } from './config/database';
+import { initializeDatabase } from './config/Database';
 
 // Routes
-import userRoutes from './route/UserRoute';
+import userRoutes from './route/user.routes';
+import authRouters from './route/auth.routes';
+import roomRouters from './route/room.routers';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api', userRoutes);
+app.use('/api/user', userRoutes);
+app.use("/auth", authRouters);
+app.use("/room", roomRouters); 
 
 // Basic health check
 app.get('/', (req, res) => {

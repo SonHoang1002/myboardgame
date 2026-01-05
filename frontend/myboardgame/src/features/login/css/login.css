@@ -1,0 +1,102 @@
+
+.input-group{
+  position: relative;
+}
+
+.input-box {
+  width: 400px;
+  font-size: 1rem;
+  padding: 10px 10px 10px 10px;
+  outline: none;
+  background: grey;
+  border-bottom: 3px solid red;
+}
+
+.input-box:focus~label,
+.input-box:not(:placeholder-shown)~label {
+  top:-20px;
+  font-size: 0.9rem;
+  color: blue;
+}
+
+.input-box:focus {
+  border-width: 3px;
+  border-bottom-color: chartreuse;
+}
+
+.label-email {
+  position: absolute;
+  left:5px;
+  top:10px;
+}
+
+
+.custom-deck-card {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  /* neo theo bottom-center */
+  width: 180px;
+  height: auto;
+}
+
+.custom-deck-card-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  user-select: none;
+}
+
+.custom-deck-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  user-select: none;
+  pointer-events: none;
+}
+
+
+/* Tablet (<768px) */
+@media (max-width: 768px) {
+  .custom-deck-card {
+    width: 140px;
+  }
+
+  .custom-deck-card-inner {
+    transform: scale(0.9);
+  }
+}
+
+/* Mobile (<480px) */
+@media (max-width: 480px) {
+  .custom-deck-card {
+    width: 110px;
+  }
+
+  .custom-deck-card-inner {
+    transform: scale(0.8);
+  }
+
+  /* Giảm lệch X/Y */
+  .custom-deck-card {
+    top: auto !important;
+    bottom: 10px;
+  }
+
+  /* Giảm góc card để không quá nghiêng */
+  .custom-deck-card-inner {
+    transform-origin: 50% 100%;
+  }
+}
+
+/* Siêu nhỏ (<360px) */
+@media (max-width: 360px) {
+  .custom-deck-card {
+    width: 90px;
+  }
+
+  .custom-deck-card-inner {
+    transform: scale(0.7);
+  }
+}
